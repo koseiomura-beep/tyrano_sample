@@ -1,46 +1,117 @@
+; オリジナルシナリオ 閉館5分前の図書館
+; 自作背景SVGと文章はCC0。実在の個人は登場しない。
 *start
-
-[title name="走るか寝るかするメロス"]
+[title name="閉館5分前の図書館"]
 [hidemenubutton]
-[wait time=200]
-[freeimage layer="base"]
+[delay speed=0]
+[jump target=*entrance]
 
-「走るか寝るかするメロス」[l][r]
-
-メロスは激怒した。[l][r]
-
-必ず、かの邪智暴虐の王を除かねばならぬと決意した。[l][r]
-
-(中略)[l][r]
-
-ああ、何もかも、ばかばかしい。私は、醜い裏切り者だ。どうとも、勝手にするがよい。やんぬる哉。[l][r]
-メロスは...[l][r]
-
-[link target=*tag_sleep] →寝る [endlink][r]
-[link target=*tag_run] →走る [endlink][r]
+*entrance
+[cm]
+[bg storage=library.svg time=180]
+[position layer=message0 left=68 top=170 width=1144 height=452 marginl=32 margint=26 marginr=32 marginb=22 color=0x12212c opacity=238 radius=16]
+[font size=35 color=0xf4dfb3 bold=true edge=none shadow=none]
+あと5分で、図書館が閉まる。[r]
+[font size=27 color=0xe4ecec bold=false]
+借りた本を返そうとしたら、しおりがないことに気づいた。[r]
+そこには「次の読者へ」とだけ、書かれていたはずだ。[r]
+雨の音を聞きながら、あなたは行き先を決める。[r]
+[r]
+[font size=27 color=0xbbe6dc]
+[link target=*counter]  → 返却カウンターへ向かう [endlink][r]
+[link target=*shelf]  → さっきの本棚を調べる [endlink][r]
+[link target=*end_forgot]  → 今日は、そのまま帰る [endlink][r]
 [s]
 
-*tag_sleep
-
+*counter
 [cm]
+[bg storage=counter.svg time=180]
+[position layer=message0 left=68 top=170 width=1144 height=452 marginl=32 margint=26 marginr=32 marginb=22 color=0x12212c opacity=238 radius=16]
+[font size=35 color=0xf4dfb3 bold=true edge=none shadow=none]
+返すだけなら、まだ間に合う。[r]
+[font size=27 color=0xe4ecec bold=false]
+カウンターの灯りが、閉館を知らせるように一つ消えた。[r]
+しおりがなくても、本は返せる。けれど、少し気になる。[r]
+[r]
+[font size=27 color=0xbbe6dc]
+[link target=*end_normal]  → 本だけ返却する [endlink][r]
+[link target=*shelf]  → しおりを探しに戻る [endlink][r]
+[s]
 
-[bg storage=sleep.jpg time=500]
-
-メロスは死んだように深く眠った。[l][r]
-勇者は、ひどく赤面した。[r]
-
-【 BAD END 】[l][cm]
-
-[jump target=*start]
-
-*tag_run
-
-[bg storage=run.jpg time=500]
-
+*shelf
 [cm]
-メロスは黒い風のように走った。[l][r]
-陽は、ゆらゆら地平線に没し、まさに最後の一片の残光も、消えようとした時、メロスは疾風の如く刑場に突入した。間に合った。[r]
+[bg storage=library.svg time=180]
+[position layer=message0 left=68 top=170 width=1144 height=452 marginl=32 margint=26 marginr=32 marginb=22 color=0x12212c opacity=238 radius=16]
+[font size=35 color=0xf4dfb3 bold=true edge=none shadow=none]
+本棚の足元に、青い紙が見える。[r]
+[font size=27 color=0xe4ecec bold=false]
+しゃがむと、しおりに小さな文字が見えた。[r]
+「読み終えたら、返却台の青い箱へ。続きを渡します」[r]
+残り時間は、あと2分。[r]
+[r]
+[font size=27 color=0xbbe6dc]
+[link target=*end_good]  → しおりを拾って、青い箱へ向かう [endlink][r]
+[link target=*end_late]  → 「続き」の本を、もっと奥まで探す [endlink][r]
+[s]
 
-【 GOOD END 】[l][cm]
+*end_good
+[cm]
+[bg storage=counter.svg time=180]
+[position layer=message0 left=68 top=170 width=1144 height=452 marginl=32 margint=26 marginr=32 marginb=22 color=0x12212c opacity=238 radius=16]
+[font size=35 color=0xf4dfb3 bold=true edge=none shadow=none]
+GOOD END  次の読者へのバトン[r]
+[font size=27 color=0xe4ecec bold=false]
+青い箱には、同じしおりを挟んだ「続きの本」があった。[r]
+本を返し、新しい一冊を借りる。しおりには、ひと言だけ。[r]
+「見つけてくれて、ありがとう。」[r]
+閉館のベルが鳴る。今度の物語は、雨の帰り道から始まる。[r]
+[r]
+[font size=27 color=0xbbe6dc]
+[link target=*start]  → 最初から、別の選択を試す [endlink][r]
+[s]
 
-[jump target=*start]
+*end_normal
+[cm]
+[bg storage=rain.svg time=180]
+[position layer=message0 left=68 top=170 width=1144 height=452 marginl=32 margint=26 marginr=32 marginb=22 color=0x12212c opacity=238 radius=16]
+[font size=35 color=0xf4dfb3 bold=true edge=none shadow=none]
+NORMAL END  約束は、また明日[r]
+[font size=27 color=0xe4ecec bold=false]
+本は、期限どおりに返せた。[r]
+しおりの行方だけが、読みかけの一行のように心に残る。[r]
+明日、もう一度来よう。あなたは傘を開いた。[r]
+[r]
+[font size=27 color=0xbbe6dc]
+[link target=*start]  → 最初から、別の選択を試す [endlink][r]
+[s]
+
+*end_late
+[cm]
+[bg storage=rain.svg time=180]
+[position layer=message0 left=68 top=170 width=1144 height=452 marginl=32 margint=26 marginr=32 marginb=22 color=0x12212c opacity=238 radius=16]
+[font size=35 color=0xf4dfb3 bold=true edge=none shadow=none]
+LATE END  探しものの続き[r]
+[font size=27 color=0xe4ecec bold=false]
+夢中で本を探しているうちに、閉館のベルが鳴った。[r]
+係の人に声をかけられ、本としおりを持って出口へ向かう。[r]
+続きを見つけるのは、明日のお楽しみになった。[r]
+[r]
+[font size=27 color=0xbbe6dc]
+[link target=*start]  → 最初から、別の選択を試す [endlink][r]
+[s]
+
+*end_forgot
+[cm]
+[bg storage=rain.svg time=180]
+[position layer=message0 left=68 top=170 width=1144 height=452 marginl=32 margint=26 marginr=32 marginb=22 color=0x12212c opacity=238 radius=16]
+[font size=35 color=0xf4dfb3 bold=true edge=none shadow=none]
+FORGOT END  かばんの重さ[r]
+[font size=27 color=0xe4ecec bold=false]
+外の雨は、思っていたよりも強かった。[r]
+駅に着いてから、かばんの本を思い出す。[r]
+明日はまず返却しよう。図書館の灯りは、もう遠くに消えていた。[r]
+[r]
+[font size=27 color=0xbbe6dc]
+[link target=*start]  → 最初から、別の選択を試す [endlink][r]
+[s]
+

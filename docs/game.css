@@ -1,0 +1,5 @@
+html, body { background: #101c24; }
+.message_outer { box-shadow: 0 16px 60px rgba(0,0,0,.22); border: 1px solid rgba(210,230,225,.18); }
+.message_inner { font-family: "Yu Gothic", "Meiryo", sans-serif !important; }
+.message_inner .event-setting-element { display: inline-block; padding: 6px 14px; margin: 3px 0; border: 1px solid rgba(174,220,211,.3); border-radius: 8px; background: rgba(127,188,174,.10); transition: background .16s; }
+.message_inner .event-setting-element:hover { background: rgba(127,188,174,.28); }
